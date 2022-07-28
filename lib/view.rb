@@ -1,27 +1,26 @@
 class View
-  def display(recipes)
+  def self.display(recipes)
     recipes.each_with_index do |recipe, index|
       status = recipe.done? ? "[X]" : "[ ]"
       puts "#{index + 1}. #{status} #{recipe.name}: #{recipe.description} (#{recipe.rating}/5) -- #{recipe.prep_time}"
     end
   end
 
-  def ask_user_for(something)
+  def self.ask_user_for(something)
     puts "#{something.capitalize}?"
     print "> "
     return gets.chomp
   end
 
-  def ask_user_for_index
+  def self.ask_user_for_index
     puts "Index?"
     print "> "
     return gets.chomp.to_i - 1
   end
 
-  def ask_user_for_rating
+  def self.ask_user_for_rating
     puts "Rating? (5 max)"
     print "> "
     return gets.chomp
   end
-
 end

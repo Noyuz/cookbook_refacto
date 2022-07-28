@@ -1,10 +1,8 @@
-class Router
-  def initialize(controller)
-    @controller = controller
-    @running    = true
-  end
+require_relative 'controller'
 
-  def run
+class Router
+  def self.run
+    @running = true
     puts "Welcome to the Cookbook!"
     puts "           --           "
 
@@ -16,26 +14,24 @@ class Router
     end
   end
 
-  private
-
-  def route_action(action)
+  def self.route_action(action)
     case action
-    when 1 then @controller.list
-    when 2 then @controller.create
-    when 3 then @controller.destroy
-    when 4 then @controller.import
-    when 5 then @controller.mark_as_done
+    when 1 then Controller.list
+    when 2 then Controller.create
+    when 3 then Controller.destroy
+    when 4 then Controller.import
+    when 5 then Controller.mark_as_done
     when 6 then stop
     else
       puts "Please press 1, 2, 3, 4, 5 or 6"
     end
   end
 
-  def stop
+  def self.stop
     @running = false
   end
 
-  def display_tasks
+  def self.display_tasks
     puts ""
     puts "What do you want to do next?"
     puts "1 - List all recipes"
